@@ -6,7 +6,7 @@ plugins {
     application
 }
 
-group = "com.codely"
+group = "com.katas"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
@@ -23,7 +23,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 application {
-    mainClass.set("com.codely.demo.CodelyberKt")
+    mainClass.set("com.katas.demo.App")
 }
 
 tasks.withType<KotlinCompile> {

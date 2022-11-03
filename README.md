@@ -1,66 +1,107 @@
-# Kotlin Bootstrap (base / project skeleton)
+# Bienvenidxs a las sesiones de coding
 
-[![Software License][ico-license]][link-license]
+El objetivo principal de estas sesiones será resolver problemas de código. A medida que vayamos avanzando, veremos
+si podemos aplicar patrones o poner en práctica algún tema que nos interese.
 
-## Introduction
+Hoy os presento un pequeño ejercicio: **Vigenère cipher**.
 
-This is a repository intended to serve as a starting point if you want to bootstrap a project in Kotlin.
+### ¿En qué consiste?
+Tendremos la siguiente tabla que forma un diccionario con las letras del alfabeto.
 
-It could be useful if you want to start from scratch a kata or a little exercise or project. The idea is that you don't have to worry about the boilerplate
-* Latest stable kotlin version
-* Best practices applied:
-    * [`README.md`][link-readme]
-    * [`LICENSE`][link-license]
-    * [`build.gradle.kts`][link-build-gradle]
-    * [`.gitignore`][link-gitignore]
-* Some useful resources to start coding
+|     | A   | B   | C   | D   | E   | F   | G   | H   | I   | J   | K   | L   | M   | N   | O   | P   | Q   | R   | S   | T   | U   | V   | W   | X   | Y   | Z   |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| A   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   |
+| B   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   |
+| C   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   |
+| D   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   |
+| E   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   |
+| F   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   |
+| G   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   |
+| H   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   |
+| I   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   |
+| J   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   |
+| K   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   |
+| L   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   |
+| M   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   |
+| N   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   |
+| O   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   |
+| P   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   |
+| Q   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   |
+| R   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   |
+| S   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   |
+| T   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   |
+| U   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   |
+| V   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   |
+| W   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   |
+| X   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   |
+| Y   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   |
+| Z   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   |
 
-## How To Start
+A continuación se decide una palabra secreta que es la que codificará el mensaje. Idealmente esta palabra no debería ser escrita en ningún sitio.
 
-You could manually clone [this repo](https://github.com/CodelyTV/kotlin-basic-skeleton) or just us it as a template
+Y para codificar el mensaje, lo primero que habría que hacer es escribirlo de la siguiente manera:
 
-### Cloning the repository
+```
+estoesunaprueba
+```
 
-We recommend to follow the next step by step process in order to avoid adding the bootstrap project commits to your project Git history:
+Entonces añadimos la palabra secreta que será **_coding_**, repitiendola las veces necesarias:
 
-1. [Use this repositoy template](https://github.com/CodelyTV/kotlin-basic-skeleton/generate)
-2. Clone your project
-3. Move to the project directory: `cd your-project-name`
-5. Build the project for the first time: `./gradlew build`
-6. Run all the checks: `./gradlew check`. This will do some checks that you can perform with isolated commands:
-    1. [Klint](https://ktlint.github.io/) using [Spotless](https://github.com/diffplug/spotless): `./gradlew spotlessCheck`. If you want to fix style issues automatically: `./gradlew spotlessApply`.
-    2. [Kotlin test](https://kotlinlang.org/api/latest/kotlin.test/): `./gradlew test`.
-7. To just run the project execute: `./gradlew run`
-7. Start coding!
+```
+codingcodingcod
+estoesunaprueba
+```
 
-## Helpful resources
+Ahora miramos en la parte superior de la tabla la letra del mensaje y la letra de la clave en la columna de la izquierda, cogemos el valor de esta intersección. Así vamos iterando hasta la última letra a codificar.
 
-### Kotlin
+```
+codingcodingcod
+estoesunaprueba
+ggwwrywbdxeagpd
+```
 
-* [Kotlin Coding Conventions](https://kotlinlang.org/docs/coding-conventions.html)
-* [Comparison between Kotlin and Java](https://kotlinlang.org/docs/comparison-to-java.html)
+El resultado de la codificación sería: **ggwwrywbdxeagpd**
 
-### Kotlin test
-
-* [Test code using JUnit in JVM - tutorial](https://kotlinlang.org/docs/jvm-test-using-junit.html)
-* [JUnit5 assertions](https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html)
+Nota: si quisieramos decodificar el mensaje, lo único que tendríamos que hacer es utilizar la palabra secreta y buscarla en la columna de la izquierda
+luego recorremos hasta encontrar la letra del mensaje cifrado y ver a qué letra le corresponde en la parte superior.
 
 
-## About
+### Primera iteración:
 
-This hopefully helpful utility has been developed by [CodelyTV][link-author] and [contributors][link-contributors].
+Vamos a codificar el siguiente mensaje con la palabra clave **QUEENS**: 
 
-We'll try to maintain this project as simple as possible, but Pull Requests are welcome!
+```
+QUEHAREMOSESTANOCHECEREBRO
+```
 
-## License
+El cifrado debe ser:
 
-The MIT License (MIT). Please see [License File][link-license] for more information.
+```
+GOILNJUGSWRKJURSPZUWIVRTHI
+```
 
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+Otro ejemplo mensaje con palabra clave **ROSALIA**:
 
-[link-license]: LICENSE
-[link-readme]: README.md
-[link-gitignore]: .gitignore
-[link-build-gradle]: build.gradle.kts
-[link-author]: https://github.com/CodelyTV
-[link-contributors]: https://github.com/CodelyTV/kotlin-basic-skeleton/graphs/contributors
+```
+BABYNOMELLAMEQUEYOESTOYOCUPAOLVIDANDOTUSMALE
+```
+
+El cifrado debe ser:
+
+```
+SOTYYWMVZDAXMQLSQOPATFMGCFXAFZNIOINUCLUDUACS
+```
+
+### Segunda iteración:
+
+Vamos a decodificar el siguiente mensaje con la palabra clave **KITTY**:
+
+```
+CPHPKOBAXKYVXR
+```
+
+El resultado descifrado es:
+
+```
+SHOWMETHEMONEY
+```
