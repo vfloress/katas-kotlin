@@ -1,8 +1,8 @@
 package com.katas.demo
 
-class VigenereCipher {
+class VigenereDecipher {
 
-    fun execute(plainText: String, keyword: String): String? {
+    fun execute(cipheredText: String, keyword: String): String {
         val dictionary = mapOf(
             "A" to 0, "B" to 1, "C" to 2, "D" to 3, "E" to 4, "F" to 5,
             "G" to 6, "H" to 7, "I" to 8, "J" to 9, "K" to 10, "L" to 11,
@@ -11,9 +11,9 @@ class VigenereCipher {
             "W" to 22, "X" to 23, "Y" to 24, "Z" to 25,
         )
 
-        var fullKeyword = createFullKeyword(plainText, keyword)
+        val fullKeyword = createFullKeyword(cipheredText, keyword)
 
-        val plainTextTransformed = plainText.map { letter ->
+        val cipheredTextTransformed = cipheredText.map { letter ->
             dictionary.getValue(letter.toString())
         }
 
@@ -21,22 +21,26 @@ class VigenereCipher {
             dictionary.getValue(letter.toString())
         }
 
-        return encode(plainTextTransformed, dictionary, keywordTransformed)
+        println(fullKeyword)
+        println(cipheredTextTransformed)
+        println(keywordTransformed)
+
+        return decode(cipheredTextTransformed, dictionary, keywordTransformed)
     }
 
-    private fun encode(
-        plainTextTransformed: List<Int>,
+    private fun decode(
+        cipheredTextTransformed: List<Int>,
         dictionary: Map<String, Int>,
         keywordTransformed: List<Int>
     ): String {
-        var textCiphered = ""
+        var plainText = ""
 
-        for (position in 0 until plainTextTransformed.count()) {
-            textCiphered += dictionary.filterValues {
-                it == (plainTextTransformed[position] + keywordTransformed[position]) % 26
+        for (position in 0 until cipheredTextTransformed.count()) {
+            plainText += dictionary.filterValues {
+                it == (cipheredTextTransformed[position] - keywordTransformed[position]).mod(26)
             }.keys.joinToString("")
         }
-        return textCiphered
+        return plainText
     }
 
     private fun createFullKeyword(plainText: String, keyword: String): String {
