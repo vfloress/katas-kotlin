@@ -21,6 +21,7 @@ dependencies {
     implementation("com.diffplug.spotless:spotless-plugin-gradle:5.7.0")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-params")
 }
 application {
     mainClass.set("com.katas.demo.App")
