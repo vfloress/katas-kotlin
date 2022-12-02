@@ -8,57 +8,57 @@ import kotlin.test.assertEquals
 class LeapYearsTest {
     @Test
     fun shouldBeLeap2400() {
-        assertTrue(LeapYears().isLeap(2400))
+        assertTrue(LeapYears.isLeap(2400))
     }
 
     @Test
     fun shouldNotBeLeap2401() {
-        assertFalse(LeapYears().isLeap(2401))
+        assertFalse(LeapYears.isLeap(2401))
     }
 
     @Test
     fun shouldNotBeLeap1900() {
-        assertFalse(LeapYears().isLeap(1900))
+        assertFalse(LeapYears.isLeap(1900))
     }
 
     @Test
     fun shouldNotBeLeap1700() {
-        assertFalse(LeapYears().isLeap(1700))
+        assertFalse(LeapYears.isLeap(1700))
     }
 
     @Test
     fun shouldNotBeLeap2100() {
-        assertFalse(LeapYears().isLeap(2100))
+        assertFalse(LeapYears.isLeap(2100))
     }
 
     @Test
     fun shouldBeLeap2008() {
-        assertTrue(LeapYears().isLeap(2008))
+        assertTrue(LeapYears.isLeap(2008))
     }
 
     @Test
     fun shouldBeLeap2012() {
-        assertTrue(LeapYears().isLeap(2012))
+        assertTrue(LeapYears.isLeap(2012))
     }
 
     @Test
     fun shouldBeLeap2016() {
-        assertTrue(LeapYears().isLeap(2016))
+        assertTrue(LeapYears.isLeap(2016))
     }
 
     @Test
     fun shouldNotBeLeap2017() {
-        assertFalse(LeapYears().isLeap(2017))
+        assertFalse(LeapYears.isLeap(2017))
     }
 
     @Test
     fun shouldNotBeLeap2018() {
-        assertFalse(LeapYears().isLeap(2018))
+        assertFalse(LeapYears.isLeap(2018))
     }
 
     @Test
     fun shouldNotBeLeap2019() {
-        assertFalse(LeapYears().isLeap(2019))
+        assertFalse(LeapYears.isLeap(2019))
     }
 
     @Test
@@ -72,6 +72,6 @@ class LeapYearsTest {
             2296, 2304, 2308, 2312, 2316, 2320, 2324, 2328, 2332, 2336, 2340, 2344, 2348, 2352, 2356, 2360, 2364, 2368, 2372, 2376,
             2380, 2384, 2388, 2392, 2396, 2400)
 
-        assertEquals(expectedLeapYears, LeapYears().leapYearsInRange(1800, 2400))
+        assertEquals(expectedLeapYears, LeapYears.leapYearsInRange(1800, 2400))
     }
 }

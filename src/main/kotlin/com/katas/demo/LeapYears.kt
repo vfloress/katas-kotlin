@@ -1,27 +1,25 @@
 package com.katas.demo
 
-class LeapYears {
+object LeapYears {
     fun isLeap(year: Int): Boolean {
         return when {
-            isDivisibleBy400(year) -> true
-            isDivisibleBy100(year) -> false
-            isDivisibleBy4(year) -> true
+            year.isDivisibleBy400() -> true
+            year.isDivisibleBy100() -> false
+            year.isDivisibleBy4() -> true
             else -> false
         }
     }
 
-    private fun isDivisibleBy400(year: Int) = year % 400 == 0
-    private fun isDivisibleBy100(year: Int) = year % 100 == 0
-    private fun isDivisibleBy4(year: Int) = year % 4 == 0
-
     fun leapYearsInRange(min: Int, max: Int): List<Int> {
-        val leapYears = mutableListOf<Int>()
+        val years = mutableListOf<Int>()
         (min..max).forEach {
-            if (isLeap(it)) {
-                leapYears.add(it)
-            }
+           years.add(it)
         }
 
-        return leapYears
+        return years.filter { isLeap(it) }
     }
 }
+
+private fun Int.isDivisibleBy400() = this % 400 == 0
+private fun Int.isDivisibleBy100() = this % 100 == 0
+private fun Int.isDivisibleBy4() = this % 4 == 0
