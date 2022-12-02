@@ -3,105 +3,51 @@
 El objetivo principal de estas sesiones será resolver problemas de código. A medida que vayamos avanzando, veremos
 si podemos aplicar patrones o poner en práctica algún tema que nos interese.
 
-Hoy os presento un pequeño ejercicio: **Vigenère cipher**.
+Hoy os presento el siguiente ejercicio: **Leap Years** (años bisiestos).
 
 ### ¿En qué consiste?
-Tendremos la siguiente tabla que forma un diccionario con las letras del alfabeto.
 
-|     | A   | B   | C   | D   | E   | F   | G   | H   | I   | J   | K   | L   | M   | N   | O   | P   | Q   | R   | S   | T   | U   | V   | W   | X   | Y   | Z   |
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| A   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   |
-| B   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   |
-| C   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   |
-| D   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   |
-| E   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   |
-| F   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   |
-| G   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   |
-| H   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   |
-| I   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   |
-| J   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   |
-| K   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   |
-| L   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   |
-| M   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   |
-| N   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   |
-| O   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   |
-| P   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   |
-| Q   | q   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   |
-| R   | r   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   |
-| S   | s   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   |
-| T   | t   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   |
-| U   | u   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   |
-| V   | v   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   |
-| W   | w   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   |
-| X   | x   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   |
-| Y   | y   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   |
-| Z   | z   | a   | b   | c   | d   | e   | f   | g   | h   | i   | j   | k   | l   | m   | n   | o   | p   | q   | r   | s   | t   | u   | v   | w   | x   | y   |
+Por el siglo XV, se usaba el calendario Juliano que definía los años bisiestos como todos los años divisibles por 4.
+Sin embargo, a finales del siglo XVI se descubrió que el año se había desviado del año solar en aproximadamente 10 días.
+Es por ello que se define el calendario gregoriano para reducir el número de años bisiestos y alinear el año al año solar.
 
-A continuación se decide una palabra secreta que es la que codificará el mensaje. Idealmente esta palabra no debería ser escrita en ningún sitio.
+El calendario gregoriano es bastante preciso, pero podría hacerse más preciso agregando una regla adicional
+que elimine los años divisibles por 4000 como años bisiestos.
+Pero supongo que cruzaremos ese puente cuando lleguemos a él ;) .
 
-Y para codificar el mensaje, lo primero que habría que hacer es escribirlo de la siguiente manera:
+
+### Escenario 1
+```
+Como usuario, quiero saber si un año es bisiesto.
+
+Los criterios de aceptación son los siguientes:
+
+1. Todos los años divisibles por 400 son años bisiestos, ejemplo: 2400.
+2. Todos los años divisibles por 100 pero no por 400 NO son años bisiestos, ejemplos: 1700, 1900 ni 2100.
+3. Todos los años divisibles por 4 pero no por 100 SON años bisiestos, ejemplos: 2008, 2012, 2016.
+4. Todos los años que no son divisibles por 4 NO son años bisiestos, ejemplos: 2017, 2018, 2019.
 
 ```
-estoesunaprueba
+
+### Escenario 2
+```
+Como usuario, dado un rango de años quiero saber todos los años que son bisiestos.
+
+Aplicaremos los mismos criterios que antes.
+
+Por ejemplo: el rango será de 1800-2400
+
+Como resultado se devolverá:
+
+[1804, 1808, 1812, 1816, 1820, 1824, 1828, 1832, 1836, 1840, 1844, 1848, 1852, 1856, 1860, 1864, 1868, 1872, 1876, 1880,
+1884, 1888, 1892, 1896, 1904, 1908, 1912, 1916, 1920, 1924, 1928, 1932, 1936, 1940, 1944, 1948, 1952, 1956, 1960, 1964,
+1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024, 2028, 2032, 2036, 2040, 2044,
+2048, 2052, 2056, 2060, 2064, 2068, 2072, 2076, 2080, 2084, 2088, 2092, 2096, 2104, 2108, 2112, 2116, 2120, 2124, 2128,
+2132, 2136, 2140, 2144, 2148, 2152, 2156, 2160, 2164, 2168, 2172, 2176, 2180, 2184, 2188, 2192, 2196, 2204, 2208, 2212,
+2216, 2220, 2224, 2228, 2232, 2236, 2240, 2244, 2248, 2252, 2256, 2260, 2264, 2268, 2272, 2276, 2280, 2284, 2288, 2292,
+2296, 2304, 2308, 2312, 2316, 2320, 2324, 2328, 2332, 2336, 2340, 2344, 2348, 2352, 2356, 2360, 2364, 2368, 2372, 2376,
+2380, 2384, 2388, 2392, 2396, 2400]
+
 ```
 
-Entonces añadimos la palabra secreta que será **_coding_**, repitiendola las veces necesarias:
-
-```
-codingcodingcod
-estoesunaprueba
-```
-
-Ahora miramos en la parte superior de la tabla la letra del mensaje y la letra de la clave en la columna de la izquierda, cogemos el valor de esta intersección. Así vamos iterando hasta la última letra a codificar.
-
-```
-codingcodingcod
-estoesunaprueba
-ggwwrywbdxeagpd
-```
-
-El resultado de la codificación sería: **ggwwrywbdxeagpd**
-
-Nota: si quisieramos decodificar el mensaje, lo único que tendríamos que hacer es utilizar la palabra secreta y buscarla en la columna de la izquierda
-luego recorremos hasta encontrar la letra del mensaje cifrado y ver a qué letra le corresponde en la parte superior.
-
-
-### Primera iteración:
-
-Vamos a codificar el siguiente mensaje con la palabra clave **QUEENS**: 
-
-```
-QUEHAREMOSESTANOCHECEREBRO
-```
-
-El cifrado debe ser:
-
-```
-GOILNJUGSWRKJURSPZUWIVRTHI
-```
-
-Otro ejemplo mensaje con palabra clave **ROSALIA**:
-
-```
-BABYNOMELLAMEQUEYOESTOYOCUPAOLVIDANDOTUSMALE
-```
-
-El cifrado debe ser:
-
-```
-SOTYYWMVZDAXMQLSQOPATFMGCFXAFZNIOINUCLUDUACS
-```
-
-### Segunda iteración:
-
-Vamos a decodificar el siguiente mensaje con la palabra clave **KITTY**:
-
-```
-CPHPKOBAXKYVXR
-```
-
-El resultado descifrado es:
-
-```
-SHOWMETHEMONEY
-```
+Nota: Este ejercicio lo haremos aplicando Test Driven Development.
