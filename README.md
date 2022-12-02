@@ -31,7 +31,7 @@ Los criterios de aceptación son los siguientes:
 
 ### Escenario 2
 ```
-Como usuario, dado un rango de años quiero saber si todos los años que son bisiestos.
+Como usuario, dado un rango de años quiero saber todos los años que son bisiestos.
 
 Aplicaremos los mismos criterios que antes.
 
