@@ -25,7 +25,7 @@ Por ejemplo: `1 -> [2, 3], 2 -> [4, 5] y 3 -> [5, 6]` como sus únicos movimient
 Lo que se proporcionará será una N que indicará las capas de la pirámide y a continuación N Arrays donde cada
 uno será + 1 más largo que el anterior.
 
-**_Lo que se busca es la suma del camina más corto._**
+**_Lo que se busca es la suma del camino más corto._**
 
 
 ### Escenario 1
