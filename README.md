@@ -121,4 +121,4 @@ Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` p
 ## Antiguas Katas
 - Vigenère cipher and decipher [VIGENERECIPHER.md](old-katas%2FVIGENERECIPHER.md)
 - Leap years [LEAPYEARS.md](old-katas%2FLEAPYEARS.md)
-- Pyramid sliding [PYRAMIDSLIDING.md](old-katas%2PYRAMIDSLIDING.md)
+- Pyramid sliding [PYRAMIDSLIDING.md](old-katas/PYRAMIDSLIDING.md)
