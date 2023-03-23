@@ -64,7 +64,7 @@ assert_equal(3 * (8 * 5 * 0.75) + 2 * (8 * 4 * 0.8),
 Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` por ejemplo `vero-vigenere`
 
 ## Antiguas Katas
-- Vigenère cipher and decipher [VIGENERECIPHER.md](old-katas/FVIGENERECIPHER.md)
-- Leap years [LEAPYEARS.md](old-katas/FLEAPYEARS.md)
+- Vigenère cipher and decipher [VIGENERECIPHER.md](old-katas/VIGENERECIPHER.md)
+- Leap years [LEAPYEARS.md](old-katas/LEAPYEARS.md)
 - Pyramid sliding [PYRAMIDSLIDING.md](old-katas/PYRAMIDSLIDING.md)
 - Nearest prime numbers and gossip bus drivers [NEARESTPRIMENUMBERS_GOSSIPBUSDRIVERS.md](old-katas/NEARESTPRIMENUMBERS_GOSSIPBUSDRIVERS.md)
