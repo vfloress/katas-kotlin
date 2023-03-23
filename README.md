@@ -15,7 +15,7 @@ Hoy os presento el siguiente ejercicio:
 Los niños de todo el mundo pensaron que era fantástico y, por supuesto, también el editor. Así pues, una de las muchas librerías,
 estableció el siguiente modelo de precios para aprovechar los poderes mágicos de Harry.
 
-Una copia de cualquiera de los cinco libros cuesta 8€. Sin embargo, si compra dos libros diferentes de la serie, obtiene
+Una copia de cualquiera de los cinco libros cuesta 8€. Sin embargo, si compras dos libros diferentes de la serie, obtienes
 un 5% de descuento en esos dos libros. Si compras 3 libros diferentes, obtienes un 10% de descuento. Con 4 libros diferentes,
 obtienes un 20% de descuento. Si vas por completo y compras los 5, obtienes un gran descuento del 25%.
 
