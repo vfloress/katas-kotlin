@@ -1,4 +1,4 @@
-package com.katas.demo
+package com.katas.demo.demo
 
 fun main() {
     println("Bienvenidxs a las sesiones de coding!")
