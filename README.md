@@ -3,62 +3,45 @@
 El objetivo principal de estas sesiones será resolver problemas de código. A medida que vayamos avanzando, veremos
 si podemos aplicar patrones o poner en práctica algún tema que nos interese.
 
-Hoy os presento el siguiente ejercicio:
+Hoy os presento el siguiente ejercicio: **Letter value sum** 
 
-**Bookstore discount for Harry Potter series** 
-
-## Bookstore discount for Harry Potter series
+## Letter value sum
 
 ### ¿En qué consiste?
 
-Érase una vez una serie de 5 libros sobre un héroe llamado Harry (al menos cuando se inventó este Kata, solo había 5).
-Los niños de todo el mundo pensaron que era fantástico y, por supuesto, también el editor. Así pues, una de las muchas librerías,
-estableció el siguiente modelo de precios para aprovechar los poderes mágicos de Harry.
-
-Una copia de cualquiera de los cinco libros cuesta 8€. Sin embargo, si compras dos libros diferentes de la serie, obtienes
-un 5% de descuento en esos dos libros. Si compras 3 libros diferentes, obtienes un 10% de descuento. Con 4 libros diferentes,
-obtienes un 20% de descuento. Si vas por completo y compras los 5, obtienes un gran descuento del 25%.
-
-Tened en cuenta que si compras, digamos, cuatro libros, de los cuales 3 son títulos diferentes, se obtiene un 10% de descuento en los
-3 que forman parte de un conjunto, pero el cuarto libro todavía costará 8€.
+Se asigna a cada letra en minúscula un valor, desde el 1 para "a" al 26 para la "z". Por lo tanto,
+dado un string de letras en minúsculas, se encontrará la suma de los valores de todas las letras.
 
 ### Escenario casos básicos
 ```
-assert_equal(0, price([]))
-assert_equal(8, price([1]))
-assert_equal(8, price([2]))
-assert_equal(8, price([3]))
-assert_equal(8, price([4]))
-assert_equal(8 * 3, price([1, 1, 1]))
+"" => 0
+"a" => 1
+"z" => 26
+"cab" => 6
+"excellent" => 100
+"microspectrophotometries" => 317
 ```
 
-### Escenario con simples descuentos
-```
-assert_equal(8 * 2 * 0.95, price([0, 1]))
-assert_equal(8 * 3 * 0.9, price([0, 2, 4]))
-assert_equal(8 * 4 * 0.8, price([0, 1, 2, 4]))
-assert_equal(8 * 5 * 0.75, price([0, 1, 2, 3, 4]))
-```
+Dada la lista siguiente: [lista_de_palabras.txt](https://raw.githubusercontent.com/dolph/dictionary/master/enable1.txt)
 
-### Escenario con múltiples descuentos
-```
-assert_equal(8 + (8 * 2 * 0.95), price([0, 0, 1]))
-assert_equal(2 * (8 * 2 * 0.95), price([0, 0, 1, 1]))
-assert_equal((8 * 4 * 0.8) + (8 * 2 * 0.95), price([0, 0, 1, 2, 2, 3]))
-assert_equal(8 + (8 * 5 * 0.75), price([0, 1, 1, 2, 3, 4]))
-```
+### Escenario bonus 1
+¿Cuántas palabras hay que sean impares?
 
-### Escenario con casos extremos
-```
-assert_equal(2 * (8 * 4 * 0.8), price([0, 0, 1, 1, 2, 2, 3, 4]))
-assert_equal(3 * (8 * 5 * 0.75) + 2 * (8 * 4 * 0.8), 
-    price([0, 0, 0, 0, 0, 
-           1, 1, 1, 1, 1, 
-           2, 2, 2, 2, 
-           3, 3, 3, 3, 3, 
-           4, 4, 4, 4])
-)
-```
+### Escenario bonus 2
+¿Cuántas palabras hay que sean pares?
+
+### Escenario bonus 3
+Encuentra la única palabra que sume 319
+
+### Escenario bonus 4
+¿Cuál es el valor más alto?
+
+### Escenario bonus 5
+Realiza una ordenación descendente por valor de las palabras.
+
+### Escenario bonus 6
+`zyzzyva` y `biodegradabilities` suman cada uno 151 y sus tamaños difieren en 11 letras. Encuentra el par de palabras
+con la misma suma de letras cuya diferencia de tamaño sea también 11 letras.
 
 ### Nota
 Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` por ejemplo `vero-vigenere`
@@ -68,3 +51,4 @@ Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` p
 - Leap years [LEAPYEARS.md](old-katas/LEAPYEARS.md)
 - Pyramid sliding [PYRAMIDSLIDING.md](old-katas/PYRAMIDSLIDING.md)
 - Nearest prime numbers and gossip bus drivers [NEARESTPRIMENUMBERS_GOSSIPBUSDRIVERS.md](old-katas/NEARESTPRIMENUMBERS_GOSSIPBUSDRIVERS.md)
+- Harry Potter Bookstore [HARRYPOTTER.md](old-katas/HARRYPOTTER.md)
