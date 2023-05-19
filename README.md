@@ -3,45 +3,59 @@
 El objetivo principal de estas sesiones será resolver problemas de código. A medida que vayamos avanzando, veremos
 si podemos aplicar patrones o poner en práctica algún tema que nos interese.
 
-Hoy os presento el siguiente ejercicio: **Letter value sum** 
+Hoy os presento el siguiente ejercicio: **Defusing the bomb**
 
-## Letter value sum
+## Defusing the bomb
 
 ### ¿En qué consiste?
 
-Se asigna a cada letra en minúscula un valor, desde el 1 para "a" al 26 para la "z". Por lo tanto,
-dado un string de letras en minúsculas, se encontrará la suma de los valores de todas las letras.
+Para desactivar la bomba hay que cortar unos cables. Estos cables son de color blanco, negro, morado, rojo, verde o
+naranja.
 
-### Escenario casos básicos
+Las reglas para desarmarla son las siguientes:
 ```
-"" => 0
-"a" => 1
-"z" => 26
-"cab" => 6
-"excellent" => 100
-"microspectrophotometries" => 317
+ - Si cortas un cable blanco, no se puede cortar un cable blanco o negro.
+ - Si cortas un cable rojo, tienes que cortar uno verde.
+ - Si cortas un cable negro, no está permitido cortar uno blanco, verde o naranja.
+ - Si cortas un cable naranja, debes cortar uno rojo o negro.
+ - Si cortas uno verde, tienes que cortar uno naranja o blanco.
+ - Si cortas un cable morado, no puedes cortar un cable morado, verde, naranja o blanco.
+```
+Si se tiene algo mal en el orden incorrecto, la bomba explotará. Además a tener en cuenta: puede haber varios cables
+del mismo color y estas instrucciones son para un cable a la vez. Una vez que cortas un cable puedes olvidarte de los
+anteriores.
+
+La entrada de datos:
+```
+    Se recibirá una secuencia de cables que se cortaron en ese orden y debemos determinar si la persona logró desarmar
+    la bomba o si explotó.
 ```
 
-Dada la lista siguiente: [lista_de_palabras.txt](https://raw.githubusercontent.com/dolph/dictionary/master/enable1.txt)
+### Escenario 1
+```
+    blanco
+    rojo
+    verde
+    blanco
+```
 
-### Escenario bonus 1
-¿Cuántas palabras hay que sean impares?
+### Resultado escenario 1
+```
+    Bomb defused
+```
 
-### Escenario bonus 2
-¿Cuántas palabras hay que sean pares?
+### Escenario 2
+```
+    blanco
+    naranja
+    verde
+    blanco
+```
 
-### Escenario bonus 3
-Encuentra la única palabra que sume 319
-
-### Escenario bonus 4
-¿Cuál es el valor más alto?
-
-### Escenario bonus 5
-Realiza una ordenación descendente por valor de las palabras.
-
-### Escenario bonus 6
-`zyzzyva` y `biodegradabilities` suman cada uno 151 y sus tamaños difieren en 11 letras. Encuentra el par de palabras
-con la misma suma de letras cuya diferencia de tamaño sea también 11 letras.
+### Resultado escenario 2
+```
+    BOOM!
+```
 
 ### Nota
 Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` por ejemplo `vero-vigenere`
@@ -52,3 +66,4 @@ Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` p
 - Pyramid sliding [PYRAMIDSLIDING.md](old-katas/PYRAMIDSLIDING.md)
 - Nearest prime numbers and gossip bus drivers [NEARESTPRIMENUMBERS_GOSSIPBUSDRIVERS.md](old-katas/NEARESTPRIMENUMBERS_GOSSIPBUSDRIVERS.md)
 - Harry Potter Bookstore [HARRYPOTTER.md](old-katas/HARRYPOTTER.md)
+- Letter value sum [LETTERVALUESUM.md](old-katas/LETTERVALUESUM.md)
