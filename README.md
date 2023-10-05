@@ -73,7 +73,7 @@ Se mostrará la cantidad de cada tipo de pastel que hornearás, por ejemplo:
 
 ### Reto 3
 ```
-    12,4,40,30,40
+    12,14,20,42,24
 ```
 
 ### Resultado reto 3
