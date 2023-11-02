@@ -1,90 +1,73 @@
-# Bienvenidxs a las sesiones de coding
+# Welcome to the Kata sessions
 
-El objetivo principal de estas sesiones será resolver problemas de código. A medida que vayamos avanzando, veremos
-si podemos aplicar patrones o poner en práctica algún tema que nos interese.
+Today I present to you the following exercise:: **Sales Commissions**
 
-Hoy os presento el siguiente ejercicio: **Possible Number of Pies**
+## Sales Commissions
 
-## Possible Number of Pies
+### Description
 
-### ¿En qué consiste?
+You're a regional manager for an office beverage sales company, and right now you're in charge of paying your sales team
+monthly commissions.
 
-Es la víspera de acción de gracias y estás esperando invitados para cenar mañana. Desafortunadamente, estuviste todo
-el día buscando memes y no saliste a comprar los ingredientes necesarios para hacer tus pasteles. Encuentras algunos
-ingredientes de respuesto y te conformas con lo que tienes. Sólo conoces dos recetas de tartas:
+Sales people get paid using the following formula for the total commission: commission is 6.2% of profit, with no
+commission for any product to total less than zero.
 
-- Pastel de calabaza
-    - 1 cuchara de saborizante sabor calabaza (eres programadorx, no cocinerx xD)
-    - 3 huevos
-    - 4 tazas de leche
-    - 3 tazas de azúcar
+### Input
 
-- Pastel de manzana
-    - 1 manzana
-    - 4 huevos
-    - 3 tazas de leche
-    - 2 tazas de azúcar
-
-**Reglas:**
-
-Tus invitados no tienen preferencia por un paste sobre otro, además quieres hacer la máxima cantidad de cualquier
-tipo de pastel con lo que tienes.
-No puedes hornear fracciones de un pastel y tampoco puedes usar fracciones de un ingrediente.
-
-**La entrada de datos:**
-
-Se proporcionará una cadena de números separados por una coma. Cada número es un número entero no negativo. Estos
-números representan la cantidad de saborizante de calabaza, manzanas, huevos, leche y azúcar que tienes.
-
-Por ejemplo: 10,14,10,42,24 significaría que tienes:
-
-- 10 cucharadas de saborizante sabor calabaza
-- 14 manzanas
-- 10 huevos
-- 42 tazas de leche
-- 24 tazas de azúcar
-
-**La salida de datos:**
-
-Se mostrará la cantidad de cada tipo de pastel que hornearás, por ejemplo:
+You'll be given two matrices showing the sales figure per salesperson for each product they sold, and the expenses by
+product per salesperson. Example:
 ```
-    3 pasteles de calabaza y 0 pasteles de manzana
+    Revenue 
+    
+            Frank   Jane
+    Tea       120    145
+    Coffee    243    265
+    
+    Expenses
+    
+            Frank   Jane
+    Tea       130     59
+    Coffee    143    198
 ```
 
-### Reto 1
+### Output
+
+Your program should calculate the commission for each salesperson for the month. Example:
+
 ```
-    10,14,10,42,24
+                    Frank   Jane
+    Commission       6.20   9.49
 ```
 
-### Resultado reto 1
+### Challenge input
 ```
-    3 pasteles de calabaza y 0 pasteles de manzana
-```
-
-### Reto 2
-```
-    12,4,40,30,40
-```
-
-### Resultado reto 2
-```
-    5 pasteles de calabaza y 3 pasteles de manzana
-```
-
-### Reto 3
-```
-    12,14,20,42,24
-```
-
-### Resultado reto 3
-```
-    5 pasteles de calabaza y 1 pasteles de manzana
+    Revenue
+    
+                Johnver Vanston Danbree Vansey  Mundyke
+    Tea             190     140    1926     14      143
+    Coffee          325      19     293   1491      162
+    Water           682      14     852     56      659
+    Milk            829     140     609    120       87
+    
+    Expenses
+    
+                Johnver Vanston Danbree Vansey  Mundyke
+    Tea             120      65     890     54      430
+    Coffee          300      10      23    802      235
+    Water            50     299    1290     12      145
+    Milk             67     254      89    129       76
 ```
 
-### Nota
-Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` por ejemplo `vero-vigenere`
+### Challenge output
+```
+                    Johnver Vanston Danbree Vansey  Mundyke
+    Commission       92       5     113     45       32
+```
 
-## Antiguas Katas
+### Note
+If you want to upload your solution, simply create a branch: `yourName-kataName`
+
+## Old Katas
 - Vigenère cipher and decipher [VIGENERECIPHER.md](old-katas/VIGENERECIPHER.md)
 - Leap years [LEAPYEARS.md](old-katas/LEAPYEARS.md)
 - Pyramid sliding [PYRAMIDSLIDING.md](old-katas/PYRAMIDSLIDING.md)
@@ -92,3 +75,4 @@ Si deseas subir tu solución, simplemente crea una rama: `tunombre-nombrekata` p
 - Harry Potter Bookstore [HARRYPOTTER.md](old-katas/HARRYPOTTER.md)
 - Letter value sum [LETTERVALUESUM.md](old-katas/LETTERVALUESUM.md)
 - Defusing the bomb [DEFUSINGTHEBOMB.md](old-katas/DEFUSINGTHEBOMB.md)
+- Possible number of pies [POSSIBLENUMBEROFPIES.md](old-katas/POSSIBLENUMBEROFPIES.md)
