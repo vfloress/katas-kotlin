@@ -1,6 +1,6 @@
 # Welcome to the Kata sessions
 
-Today I present to you the following exercise:: **Sales Commissions**
+Today I present to you the following exercise: **Sales Commissions**
 
 ## Sales Commissions
 
